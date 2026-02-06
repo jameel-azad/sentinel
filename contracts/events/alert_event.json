@@ -1,0 +1,8 @@
+{
+    "sensor_id":"CAM_01",
+    "location":"TEST_LAB",
+    "event_type":"FIRE",
+    "confidence":0.0,
+    "severity":"HIGH",
+    "timestamp":"2026-02-06T18:52:10Z"
+}
