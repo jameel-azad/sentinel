@@ -1,13 +1,22 @@
 from datetime import datetime, timezone
+import time
 import json
 
-event = {
-    "sensor_id":"WEBCAM",
-    "location":"TEST_LAB",
-    "event_type":"FIRE",
-    "confidence":0.0,
-    "severity":"HIGH",
-    "timestamp": datetime.now(timezone.utc).isoformat()
-}
+def create_event(event_type,confidence=1.0,severity='LOW'):
+    event = {
+        "sensor_id":"WEBCAM",
+        "location":"TEST_LAB",
+        "event_type":event_type,
+        "confidence":confidence,
+        "severity":severity,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+    return event
 
-print(json.dumps(event, default=str))
+while True:
+    try:
+        event = create_event('HEARTBEAT')
+        print(json.dumps(event), flush=True)
+        time.sleep(2)
+    except KeyboardInterrupt:
+        break
