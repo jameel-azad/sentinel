@@ -13,10 +13,14 @@ def create_event(event_type,confidence=1.0,severity='LOW'):
     }
     return event
 
+def emit_event(event):
+    event_json = json.dumps(event)
+    print(event_json, flush=True)
+
 while True:
     try:
         event = create_event('HEARTBEAT')
-        print(json.dumps(event), flush=True)
+        emit_event(event)
         time.sleep(2)
     except KeyboardInterrupt:
         break
